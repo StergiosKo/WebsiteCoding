@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+body{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    background-color: hsl(240, 78%, 98%);
+    font-size: 15px;
+}
+
+#topDescription{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.rowBox{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.columnBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 280px;
+    height: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px hsl(234, 14%, 74%);
+    background-color: white;
+}
+
+#coloredBox{
+    z-index: 10;
+    height: 400px;
+    width: 300px;
+    margin: -25px -10px 0px -10px;
+    color: white;
+    background: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+}
+
+hr {
+    width: 80%;
+    border: 1px solid black;
+    opacity: 0.1;
+    margin-top: 8px;
+}
+
+.whiteHr{
+    border: 1px solid white;
+}
+
+.learnMoreButton{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 10px 0px 10px 0px;
+    width: 80%;
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    background: linear-gradient(35deg,hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    transition: 0.4s;
+}
+
+.learnMoreButton:hover{
+    background: transparent;
+    border: 1px solid hsl(237, 63%, 64%);
+    color: hsl(237, 63%, 64%);
+    background-color: white;
+    cursor: pointer;
+}
+
+#coloredButton{
+    background:transparent;
+    background-color: white;
+    border: 1px solid white;
+    color: hsl(237, 63%, 64%);
+}
+
+#coloredButton:hover{
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.price{
+    font-size: 45px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.features{
+    margin-top: 15px;
+}
+
+.monthly{
+    display: none;
+}
+
+#topLogo{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
+
+#bottomLogo{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+
+.dollarSign{
+    font-size: 30px;
+    margin-right: 8px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+  @media only screen and (max-width: 395px) {
+    .rowBox {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    #topLogo{
+        z-index: -1;
+        right: -200px;
+        top: -50px;
+    }
+
+    #bottomLogo{
+        display: none;
+    }
+
+    #coloredBox{
+        margin: 30px 0px 30px 0px;
+        width: 280px;
+        height: 350px;
+    }
+  }
