@@ -244,7 +244,7 @@ a:hover {
 
 #early-access{
     background-color: hsl(217, 28%, 15%);
-    width: 60%;
+    width: 45%;
     margin: -100px auto 20px auto;
     padding: 20px;
     box-shadow: 0 0 2px black;
@@ -257,8 +257,8 @@ a:hover {
 }
 
 #early-access p{
-    width: 70%;
-    margin: 10px 15% 20px 15%;
+    width: 75%;
+    margin: 10px auto 20px auto;
 }
 
 #early-access #email-container{
@@ -278,13 +278,13 @@ a:hover {
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
     border-radius: 25px;
-    width: 40%;
+    width: 50%;
     resize: none;
     outline: none;
 }
 
 #early-access input::placeholder{
-    color: lightgray;
+    color: rgb(151, 149, 149);
 }
 
 #early-access #email-signup{
@@ -292,7 +292,7 @@ a:hover {
     border-radius: 25px;
     text-align: left;
     font-size: 14px;
-    padding: 10px 30px 10px 30px;
+    padding: 12px 30px 12px 30px;
     color: black;
     width: 40%;
     vertical-align: center;
@@ -306,13 +306,21 @@ a:hover {
     color: white;
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
-    padding: 10px 30px 10px 30px;
+    padding: 12px 30px 12px 30px;
     margin: 10px;
 }
 
 #early-access button:hover{
     background: linear-gradient(hsl(176, 68%, 64%), hsl(176, 68%, 64%));
     cursor: pointer;
+}
+
+#early-access #error-message{
+    color: hsl(0, 100%, 63%);
+    margin-top: 2px;
+    padding-top: 2px;
+    text-align: left;
+    margin-bottom: 5px;
 }
 
 #footer-background{
