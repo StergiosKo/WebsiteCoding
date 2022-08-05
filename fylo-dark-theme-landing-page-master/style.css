@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap');
 
+/* 
+*{
+    outline: 1px solid red;
+} */
+
+/* <---------- Body + Backgrounds ----------> */
+
 body{
     display: flex;
     flex-direction: column;
@@ -19,6 +26,16 @@ body svg#background-desktop{
     margin-top: -180px;
     width: 100%;
 }
+
+img#background-mobile{
+    display: none;
+}
+
+
+
+/* <---------- Header ----------> */
+
+
 
 header{
     width: 100%;
@@ -51,9 +68,15 @@ a:hover {
      text-decoration: underline;
 }
 
-#logo{
-    padding-left: 10px;
+header div img{
+    padding-left: 20px;
 }
+
+
+
+/* <---------- Main Banner ----------> */
+
+
 
 .main-banner{
     width: 720px;
@@ -96,6 +119,12 @@ a:hover {
     cursor: pointer;
 }
 
+
+
+/* <---------- Small Banners ----------> */
+
+
+
 #banner-background{
     margin-top: -30px;
     width: 100%;
@@ -132,13 +161,19 @@ a:hover {
     font-size: 14px;
 }
 
+
+
+/* <---------- Productivity ----------> */
+
+
+
 #productive-background{
     width: 100%;
     background-color: hsl(218, 28%, 13%);
 }
 
 #productive-container{
-    margin: 100px 18% 0px 18%;
+    margin: 100px auto 0px auto;
     width: 66%;
     display: flex;
     flex-direction: row;
@@ -171,10 +206,16 @@ a:hover {
     color: white;
 }
 
-#svg-arrow{
+#explain-image a img{
     vertical-align: sub;
     padding-bottom: 1px;
 }
+
+
+
+/* <---------- Quotes ----------> */
+
+
 
 #quotes-background{
     width: 100%;
@@ -197,6 +238,7 @@ a:hover {
     padding: 20px 50px 20px 50px;
     text-align: left;
     width: 19%;
+    border-radius: 5px;
 }
 
 .quotes-container div img#quotes{
@@ -242,6 +284,12 @@ a:hover {
     margin-left: 10px;
 }
 
+
+
+/* <---------- Email Signup / Eearly Access ----------> */
+
+
+
 #early-access{
     background-color: hsl(217, 28%, 15%);
     width: 45%;
@@ -271,12 +319,12 @@ a:hover {
 }
 
 #early-access input{
-    padding: 10px 30px 10px 30px;
+    padding: 12px 30px 12px 30px;
     margin: 10px;
     color: black;
     border: none;
     font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
     border-radius: 25px;
     width: 50%;
     resize: none;
@@ -322,6 +370,12 @@ a:hover {
     text-align: left;
     margin-bottom: 5px;
 }
+
+
+
+/* <---------- Footer ----------> */
+
+
 
 #footer-background{
     width: 100%;
@@ -407,6 +461,18 @@ footer #footer-flexbox #social svg:hover{
 
 
 @media only screen and (max-width: 1000px){
+
+    /* <---------- Small Banners ----------> */
+
+    .banner-grid-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+
+    /* <---------- Quotes ----------> */
+
     .quotes-container{
         flex-direction: column;
         align-items: center;
@@ -418,6 +484,10 @@ footer #footer-flexbox #social svg:hover{
         width: 50%;
         padding: 20px 50px 0px 50px;
     }
+
+
+    /* <---------- Productivity ----------> */
+
 
     #productive-container{
         flex-direction: column;
@@ -434,14 +504,52 @@ footer #footer-flexbox #social svg:hover{
         width: 100%;
     }
 
+
+    /* <---------- Email Signup / Eearly Access ----------> */
+
+
+    #early-access{
+        width: 75%;
+    }
+
+    #early-access p{
+        width: 90%;
+    }
+
+    #early-access #email-container{
+        flex-direction: column;
+    }
+    
+    #early-access #email-container input{
+        width: auto;
+    }
+
+    #early-access #email-container button{
+        width: 216px;
+    }
+
+    #early-access #error-message{
+        text-align: center;
+    }
+
+
+    /* <---------- Footer ----------> */
+
+
+    footer{
+        margin-top: 50%;
+    }
+
     footer #footer-flexbox #footer1{
         width: 100%;
     }
-
     
 }
 
 @media only screen and (max-width: 395px) {
+
+    /* <---------- Body + Backgrounds ----------> */
+
 
     body{
         display: flex;
@@ -451,8 +559,44 @@ footer #footer-flexbox #social svg:hover{
         margin: 0;
     }
 
+    img#background-mobile{
+        display: block;
+        margin-top: -390px;
+        z-index: -3;
+    }
+
+    body svg#background-desktop{
+        display: none;
+    }
+
+
+    /* <---------- Header ----------> */
+
+
+    header{
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    header div img{
+        transform: scale(0.5);
+        margin-left: -70px;
+    }
+
+    header ul{
+        padding: 0px;
+    }
+
+    ul#navList li{
+        padding-right: 10px;
+    }
+
+
+    /* <---------- Main Banner ----------> */
+
+
     .main-banner p{
-        width: 60%;
+        width: 80%;
         margin: 20px auto 20px auto;
     }
 
@@ -462,20 +606,115 @@ footer #footer-flexbox #social svg:hover{
         padding: 20px;
     }
 
+
+    /* <---------- Small Banners ----------> */
+
+
+    #banner-background{
+        margin: auto;
+        z-index: -5;
+    }
+
     .banner-grid-container{
         position: relative;
-        width: 100%;
+        width: 80%;
+        margin-top: 350px;
+        margin-left: auto;
+        margin-right: auto;
         display: flex;
         flex-direction: column;
         position: relative;
         align-items: center;
         justify-content: center;
-        left: 45%;
+        z-index: 1;
     }
 
     .banner-grid-container .banner{
         margin: 0px;
         width: 100%;
+    }
+
+    .main-banner{
+        width: 90%;
+        margin: auto auto auto auto;
+        padding: auto;
+    }
+
+    .main-banner img{
+        width: 100%;
+    }
+
+
+    /* <---------- Productivity ----------> */
+
+
+    #productive-container{
+        width: 90%;
+    }
+
+    #productive-container div{
+        width: 100%;
+        text-align: left;
+        margin-left: 20px;
+    }
+
+    #productive-container div#explain-image h2{
+        font-size: 20px;
+        margin-top: 5%;
+    }
+
+
+    #productive-container img{
+        width: 100%;
+        margin: 0px;
+    }
+
+
+    /* <---------- Email Signup / Eearly Access ----------> */
+
+
+    #explain-image a img{
+        width: auto;
+    }
+
+
+    /* <---------- Footer ----------> */
+
+
+    footer{
+        width: 90%;
+        margin-left: 10%;
+        margin-right: auto;
+    }
+
+    footer #footer-flexbox{
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        text-align: left;
+        margin-left: -5%;
+    }
+
+    footer #footer-flexbox #footer1{
+        width: 90%;
+        padding-bottom: 10px;
+        margin-left: 5%;
+    }
+
+    footer #footer-flexbox #footer-contact{
+        justify-content: left;
+        align-items: left;
+        width: 100%;
+    }
+
+    footer #footer-flexbox .column-links{
+        margin: 20px 0px 20px 0px;
+        text-align: left;
+    }
+
+    footer #footer-flexbox #social{
+        margin-top: 10px;
+        align-self: center;
     }
 
 }
