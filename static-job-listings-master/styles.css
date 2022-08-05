@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
+
+
+body{
+    margin: 0px;
+    font-size: 15px;
+    font-family: 'League Spartan', sans-serif;
+    background-color: hsl(180, 52%, 96%)
+}
+
+header{
+    background-color: hsl(180, 29%, 50%);
+    margin-bottom: 30px;
+    height: 165px;
+}
+
+header img{
+    width: 100%;
+    height: 165px;
+}
+
+body div#main-background{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* <----- Job Box ----->*/
+
+.job-listing{
+    position: relative;
+    width: 75%;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    border-left: 5px solid hsl(180, 29%, 50%);
+    box-shadow: 4px 6px 5px rgba(0,0,0,0.2);
+}
+
+.job-listing img{
+    position: absolute;
+    top: -45px;
+    left: 5px;
+    transform: scale(0.6);
+}
+
+
+/* <----- First Row Details ----->*/
+
+
+.job-listing .first-row{
+    margin-top: 5px;
+    widows: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.job-listing .first-row p{
+    margin-right: 15px;
+    color: hsl(180, 29%, 50%);
+    font-weight: 700;
+}
+
+.job-listing .first-row div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+
+.job-listing .first-row div p{
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.job-listing .first-row div .effect{
+    margin-right: 5px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+}
+
+.job-listing .first-row div .ef-new{
+    background-color: hsl(180, 29%, 50%);
+}
+
+.job-listing .first-row div .ef-featured{
+    background-color: hsl(180, 14%, 20%);
+}
+
+/* <----- Second Row ----->*/
+
+.job-listing p{
+    color: black;
+    font-weight: 700;
+    margin: 6px 0px;
+}
+
+/* <----- Third Row ----->*/
+
+.job-listing ul{
+    padding-left: 0px;
+    color: hsl(180, 8%, 52%);
+    padding-bottom: 10px;
+    border-bottom: 1px solid hsl(180, 8%, 52%);;
+}
+
+.job-listing ul li{
+    display: inline;
+}
+
+.job-listing ul li + li::before {
+    content: " · ";
+}
+
+
+/* <----- Roles and Languages ----->*/
+
+.job-listing .roles-languages{
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.job-listing .roles-languages p{
+    margin: 5px 15px 5px 0px;
+    padding: 5px 12px 5px 12px;
+    background-color: hsl(180, 52%, 96%);
+    border-radius: 5px;
+    color: hsl(180, 29%, 50%);
+    font-weight: 700;
+}
