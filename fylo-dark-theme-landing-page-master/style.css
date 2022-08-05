@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap');
 
-/* 
-*{
+
+/* *{
     outline: 1px solid red;
 } */
 
@@ -16,12 +16,10 @@ body{
     color: white;
     text-align: center;
     align-items: center;
-    margin: 0px;
 }
 
-body svg#background-desktop{
+img#background-desktop{
     position: relative;
-    left: 55px;
     z-index:-2;
     margin-top: -180px;
     width: 100%;
@@ -111,7 +109,7 @@ header div img{
     color: white;
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
-    padding: 10px 60px 10px 60px;
+    padding: 10px 60px;
     margin-top: 10px;
 }
 
@@ -557,16 +555,17 @@ footer #footer-flexbox #social svg:hover{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 0;
+        margin: 0px 5px;
     }
 
     img#background-mobile{
+        width: 90%;
         display: block;
-        margin-top: -390px;
+        margin: -390px auto 0px;
         z-index: -3;
     }
 
-    body svg#background-desktop{
+    img#background-desktop{
         display: none;
     }
 
@@ -575,17 +574,20 @@ footer #footer-flexbox #social svg:hover{
 
 
     header{
+        width: 95%;
+        margin: 10px auto;
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 30% 70%;
     }
 
     header div img{
         transform: scale(0.5);
-        margin-left: -70px;
+        margin-left: -50px;
     }
 
     header ul{
         padding: 0px;
+        justify-self: end;
     }
 
     ul#navList li{
@@ -595,14 +597,18 @@ footer #footer-flexbox #social svg:hover{
 
     /* <---------- Main Banner ----------> */
 
+    .main-banner{
+        margin: 0px;
+    }
+
 
     .main-banner p{
         width: 80%;
-        margin: 20px auto 20px auto;
+        margin: 20px auto;
     }
 
     .main-banner button{
-        width: 40%;
+        width: 70%;
         margin: 20px auto 20px auto;
         padding: 20px;
     }
