@@ -79,7 +79,7 @@ header div img{
 
 
 .main-banner{
-    width: 720px;
+    width: 100%;
     margin: auto auto 100px auto;
     padding: auto;
 }
@@ -90,7 +90,8 @@ header div img{
 
 .main-banner img{
     display: block;
-    margin-bottom: 50px;
+    margin: 0px auto 50px auto;
+    width: 50%;
 }
 
 .main-banner h2{
@@ -186,27 +187,27 @@ header div img{
     margin-left: 50px;
 }
 
-#productive-container div#explain-image h2{
+#productive-container div h2{
     width: 50%;
     font-family: 'Raleway', sans-serif;
     font-size: 28px;
 }
 
-#productive-container div#explain-image p{
+#productive-container div p{
     width: 90%;
 }
 
-#productive-container div#explain-image a{
+#productive-container div a{
     color: hsl(176, 68%, 64%);
     text-decoration: none;
     border-bottom: 1px solid;
 }
 
-#productive-container div#explain-image a:hover{
+#productive-container div a:hover{
     color: white;
 }
 
-#explain-image a img{
+#productive-container div a a img{
     vertical-align: sub;
     padding-bottom: 1px;
 }
@@ -500,7 +501,7 @@ footer #footer-flexbox #social svg:hover{
         width: 100%;
     }
 
-    #productive-container div#explain-image h2{
+    #productive-container div h2{
         width: 100%;
     }
 
@@ -658,7 +659,7 @@ footer #footer-flexbox #social svg:hover{
         margin-left: 20px;
     }
 
-    #productive-container div#explain-image h2{
+    #productive-container div h2{
         font-size: 20px;
         margin-top: 5%;
     }
@@ -673,7 +674,7 @@ footer #footer-flexbox #social svg:hover{
     /* <---------- Email Signup / Eearly Access ----------> */
 
 
-    #explain-image a img{
+    #productive-container div a img{
         width: auto;
     }
 
