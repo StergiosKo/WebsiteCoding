@@ -116,6 +116,7 @@ body section#filter{
     display: flex;
     flex-direction: row;
     align-items: center;
+    min-height: 54px;
 }
 
 .job-listing .first-row h2{
