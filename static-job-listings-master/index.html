@@ -9,6 +9,7 @@
   <title>Frontend Mentor | Job Listings</title>
   <link rel="stylesheet" href="styles.css">
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <script src="script.js" defer></script>
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
@@ -19,70 +20,97 @@
     <img src="images/bg-header-mobile.svg">
   </header>
   <div id="main-background">
-    <div class="job-listing">
-        <!-- Item Start -->
-        <img src="images/photosnap.svg">
-        <div class="first-row">
-          <p> Photosnap </p>
-          <div>
-            <p class="ef-new effect"> New! </p>
-            <p class="ef-featured effect"> Featured </p>
-          </div>
-        </div>
-        <p> Senior Frontend Developer</p>
+
+    <section id="filter">
+      <div>
         <ul>
-          <li> 1d ago </li>
-          <li> Full Time </li>
-          <li> USA only </li>
-        </ul> 
-        <div class="roles-languages">
+          <li data-role-type="Frontend">
+            <p> Frontend </p>
+            <img src="images/icon-remove.svg">
+          </li>
+          <li data-language-type="CSS">
+            <p> CSS </p>
+            <img src="images/icon-remove.svg">
+          </li>
+          <li data-language-type="Javascript">
+            <p> JavaScript </p>
+            <img src="images/icon-remove.svg">
+          </li>
+        </ul>
+        <h2>
+          Clear
+        </h2>
+        <button id="testButton"> Press me </button>
+      </div>
+
+    </section>
+
+    <div class="job-listing">
+      <!-- Item Start -->
+      <img src="images/photosnap.svg">
+      <div class="first-row">
+        <h2> Photosnap </h2>
+        <ul>
+          <li class="ef-new effect"> New! </li>
+          <li class="ef-featured effect"> Featured </li>
+        </ul>
+      </div>
+      <h2> Senior Frontend Developer</h2>
+      <ul class="employee-description">
+        <li> 1d ago </li>
+        <li> Full Time </li>
+        <li> USA only </li>
+      </ul> 
+      <ul class="roles-languages">
          
-          <!-- Role -->
-          <p>Frontend </p>
+        <!-- Role -->
+        <li data-role-type="Frontend">Frontend </li>
 
-          <!-- Level -->
-          <p> Senior </p>
+        <!-- Level -->
+        <li data-level-type="Senior"> Senior </li>
 
-          <!-- Languages -->
-          <p> HTML </p>
-          <p> CSS </p>
-          <p> JavaScript </p>
+        <!-- Languages -->
+        <li data-language-type="HTML"> HTML </li>
+        <li data-language-type="CSS"> CSS </li>
+        <li data-language-type="JavaScript"> JavaScript </li>
 
-           <!-- Item End -->
-        </div>
+        <!-- Item End -->
+      </ul>
     </div>
+
 
     <div class="job-listing">
       <!-- Item Start -->
       <img src="images/manage.svg">
       <div class="first-row">
-        <p> Manage </p>
-        <div>
-          <p class="ef-new effect"> New! </p>
-          <p class="ef-featured effect"> Featured </p>
-        </div>
+        <h2> Manage </h2>
+        <ul>
+          <li class="ef-new effect"> New! </li>
+          <li class="ef-featured effect"> Featured </li>
+        </ul>
       </div>
-      <p> Fullstack Developer</p>
-      <ul>
+      <h2> Fullstack Developer </h2>
+      <ul class="employee-description">
         <li> 1d ago </li>
         <li> Part Time </li>
         <li> Remote </li>
       </ul> 
-      <div class="roles-languages">
+      <ul class="roles-languages">
        
         <!-- Role -->
-        <p> Fullstack</p>
+        <li data-role-type="Fullstack"> Fullstack </li>
 
         <!-- Level -->
-        <p> Midweight</p>
-        
+        <li data-level-type="Midweight"> Midweight </li>
+
         <!-- Languages -->
-        <p> Python </p>
-        <p> React </p>
+        <li data-language-type="Python"> Python </li>
+        <li data-language-type="React"> React </li>
 
          <!-- Item End -->
-      </div>
-    </div>
+      </ul>
+    </div>    
+
 
     <div class="job-listing">
       <!-- Item Start -->

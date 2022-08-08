@@ -26,6 +26,65 @@ body div#main-background{
     align-items: center;
 }
 
+body section#filter{
+    width: 75%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: -70px auto 50px auto;
+    box-shadow: 1px 2px 10px hsl(180, 46%, 70%);
+}
+
+#filter div{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+#filter div h2{
+    font-size: 18px;
+    color: hsl(180, 23%, 70%);
+    cursor: pointer;
+}
+
+#filter ul{
+    width: 100%;
+    margin: 0px 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    color: hsl(180, 8%, 52%);
+}
+
+#filter ul li{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
+
+#filter ul li p{
+    margin: 5px 0px;
+    background-color: hsl(180, 52%, 96%); 
+    padding: 10px;
+    border-radius: 5px 0px 0px 5px;
+    color: hsl(180, 29%, 50%);
+    font-weight: 700;
+}
+
+#filter ul li img{
+    margin-right: 10px;
+    background-color: hsl(180, 29%, 50%);
+    padding: 10px;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+
+
+
 /* <----- Job Box ----->*/
 
 .job-listing{
@@ -36,7 +95,7 @@ body div#main-background{
     border-radius: 5px;
     padding: 20px;
     border-left: 5px solid hsl(180, 29%, 50%);
-    box-shadow: 4px 6px 5px rgba(0,0,0,0.2);
+    box-shadow: 1px 2px 10px hsl(180, 46%, 70%);
 }
 
 .job-listing img{
@@ -59,75 +118,81 @@ body div#main-background{
     align-items: center;
 }
 
-.job-listing .first-row p{
+.job-listing .first-row h2{
     margin-right: 15px;
     color: hsl(180, 29%, 50%);
     font-weight: 700;
+    font-size: 15px;
 }
 
-.job-listing .first-row div{
+.job-listing .first-row ul{
     display: flex;
     flex-direction: row;
     margin-left: 20px;
+    padding-left: 0px;
+    list-style: none;
 }
 
 
-.job-listing .first-row div p{
+.job-listing .first-row ul li{
     border-radius: 15px;
     padding: 5px 10px;
 }
 
-.job-listing .first-row div .effect{
+.job-listing .first-row ul .effect{
     margin-right: 5px;
     font-weight: 700;
     color: white;
     text-transform: uppercase;
 }
 
-.job-listing .first-row div .ef-new{
+.job-listing .first-row ul .ef-new{
     background-color: hsl(180, 29%, 50%);
 }
 
-.job-listing .first-row div .ef-featured{
+.job-listing .first-row ul .ef-featured{
     background-color: hsl(180, 14%, 20%);
 }
 
 /* <----- Second Row ----->*/
 
-.job-listing p{
+.job-listing h2{
     color: black;
     font-weight: 700;
     margin: 6px 0px;
+    font-size: 15px;
 }
 
 /* <----- Third Row ----->*/
 
-.job-listing ul{
+.job-listing ul.employee-description{
     padding-left: 0px;
     color: hsl(180, 8%, 52%);
     padding-bottom: 10px;
-    border-bottom: 1px solid hsl(180, 8%, 52%);;
+    border-bottom: 1px solid hsl(180, 8%, 52%);
 }
 
-.job-listing ul li{
+.job-listing ul.employee-description li{
     display: inline;
 }
 
-.job-listing ul li + li::before {
+.job-listing ul.employee-description li + li::before {
     content: " · ";
 }
 
 
 /* <----- Roles and Languages ----->*/
 
-.job-listing .roles-languages{
+.job-listing ul.roles-languages{
     margin: 0px;
+    padding-left: 0px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    list-style: none;
 }
 
-.job-listing .roles-languages p{
+.job-listing ul.roles-languages li{
     margin: 5px 15px 5px 0px;
     padding: 5px 12px 5px 12px;
     background-color: hsl(180, 52%, 96%);
