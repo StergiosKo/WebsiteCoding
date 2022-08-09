@@ -35,7 +35,7 @@ body div#main-background #jobs{
 }
 
 body section#filter{
-    width: 75%;
+    width: 85%;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
@@ -45,7 +45,7 @@ body section#filter{
 
 #filter div{
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 85% 15%;
     justify-content: center;
     align-items: center;
     padding-left: 10px;

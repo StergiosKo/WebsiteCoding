@@ -1,6 +1,11 @@
 const button = document.querySelector("#test-button");
 const clearFilterButton = document.querySelector("#clear-button");
 
+const roles = ['Frontend', 'Backend', 'Fullstack'];
+const level = ['Junior', 'Midweight', 'Senior'];
+const languages = ['Python', 'Ruby', 'JavaScript', 'HTML', 'CSS'];
+const tools = ['React', 'Sass', 'Vue', 'Django', 'RoR'];
+
 ///// JSON
 
 const jobs = [
@@ -156,50 +161,80 @@ const jobs = [
     }
 ]
 
-window.addEventListener("DOMContentLoaded", loadJobs(jobs));
 
-button.addEventListener('click', function(){
-    document.querySelector("#jobs").innerHTML = '';
-    test();
-})
+
+window.addEventListener("DOMContentLoaded", loadJobs(jobs));
 
 
 clearFilterButton.addEventListener('click', function(){
+    document.querySelector("#filter > div > ul").innerHTML = '';
     document.querySelector("#jobs").innerHTML = '';
     loadJobs(jobs);
 })
 
-function test(){
-    let newJobs = jobs.filter(function(item){
-        return (item.role == "Frontend" && item.languages.includes("CSS") && item.languages.includes("JavaScript"))
-    })
+function applyFilters(){
+    let newJobs = [...jobs];
+    let filterList = document.querySelectorAll("#filter > div > ul > li > p");
+    filterList.forEach(element => {
+        if (roles.includes(element.innerHTML)){
+          newJobs = newJobs.filter(function(item){
+            return (item.role == element.innerHTML);
+          })
+        }
+
+        if (level.includes(element.innerHTML)){
+          newJobs = newJobs.filter(function(item){
+            return (item.level == element.innerHTML);
+          })
+        }
+
+        if (languages.includes(element.innerHTML)){
+          newJobs = newJobs.filter(function(item){
+            return (item.languages.includes(element.innerHTML));
+          })
+        }
+
+        if (tools.includes(element.innerHTML)){
+          newJobs = newJobs.filter(function(item){
+            return (item.tools.includes(element.innerHTML));
+          })
+        }
+
+    });
     loadJobs(newJobs);
 }
 
-function applyFilters(){
-    let filterList = document.querySelectorAll("#filter > div > ul > li");
-    console.log(filterList);
-    filterList.forEach(element => {
-        console.log(element)
-    });
-}
+function addFilter(button){
+  // Button that initiated function
+  string = button.innerHTML;
 
-function addFilter(string){
-    // let filterList = document.querySelector("#filter > div > ul");
-    // let elLi = document.createElement('li');
-    // let elP = document.createElement('p');
-    // elP.textContent = string;
-    // elLi.appendChild(elP);
-    // let elImg = document.createElement('img');
-    // elImg.src = 'images/icon-remove.svg';
-    // elLi.appendChild(elImg);
+  // Creating elements to add in HTML
+  let filterList = document.querySelector("#filter > div > ul");
+  let elLi = document.createElement('li');
+  let elP = document.createElement('p');
 
-    // filterList.appendChild(elLi);
-    console.log("ok")
+  // Text of filter
+  elP.textContent = string;
+  elLi.appendChild(elP);
+
+  // Delete image on filter that will remove filter when clicked
+  let elImg = document.createElement('img');
+  elImg.src = 'images/icon-remove.svg';
+  elImg.addEventListener('click', function(){
+    elImg.parentElement.remove();
+    applyFilters();
+  })
+
+  // Finishing appending
+  elLi.appendChild(elImg);
+  filterList.appendChild(elLi);
+
+  applyFilters();
 }
 
 
 function loadJobs(jobsArray){
+  // Creating job divs in HTML based on the current job Array given after being modified by filters
     let displayJobs = jobsArray.map(function(item){
         return `<div ${item.featured ? `class="job-listing featured"` : `class="job-listing"`}>
             <img src=${item.logo} alt=${item.logo}>
@@ -218,25 +253,30 @@ function loadJobs(jobsArray){
             </ul> 
             <ul class="roles-languages">
                 
-                <li> ${item.role} </li>
+                <li>${item.role}</li>
     
-                <li> ${item.level} </li>
+                <li>${item.level}</li>
     
     
-                <li> ${item.languages[0]} </li>
-                ${item.languages[1] ? `<li> ${item.languages[1]} </li>` : ''}
-                ${item.languages[2] ? `<li> ${item.languages[2]} </li>` : ''}
-                ${item.tools[0] ? `<li> ${item.tools[0]} </li>` : ''}
-                ${item.tools[1] ? `<li> ${item.tools[1]} </li>` : ''}
+                <li>${item.languages[0]}</li>
+                ${item.languages[1] ? `<li>${item.languages[1]}</li>` : ''}
+                ${item.languages[2] ? `<li>${item.languages[2]}</li>` : ''}
+                ${item.tools[0] ? `<li>${item.tools[0]}</li>` : ''}
+                ${item.tools[1] ? `<li>${item.tools[1]}</li>` : ''}
     
             </ul>
             </div>`;
             
     })
-    displayJobs = displayJobs.join("");
-    console.log("creating...");
+    displayJobs = displayJobs.join("");;
   
     document.querySelector("#jobs").innerHTML = displayJobs;
+    
+    // Adding functionality on list items that can be clicked to add filters
+    buttons = document.querySelectorAll(".job-listing > .roles-languages > li");
+    buttons.forEach(element => {
+      element.addEventListener('click', (evt) => addFilter(element))
+    });
     
 }
 
