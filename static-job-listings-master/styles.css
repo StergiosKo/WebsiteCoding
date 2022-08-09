@@ -26,6 +26,14 @@ body div#main-background{
     align-items: center;
 }
 
+body div#main-background #jobs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 body section#filter{
     width: 75%;
     background-color: white;
@@ -40,6 +48,7 @@ body section#filter{
     grid-template-columns: 80% 20%;
     justify-content: center;
     align-items: center;
+    padding-left: 10px;
 }
 
 #filter div h2{
@@ -79,10 +88,13 @@ body section#filter{
     background-color: hsl(180, 29%, 50%);
     padding: 10px;
     border-radius: 0px 5px 5px 0px;
-    cursor: pointer;
+    transition: 0.3s;
 }
 
-
+#filter ul li img:hover{
+    background-color: hsl(180, 14%, 20%);
+    cursor: pointer;
+}
 
 
 /* <----- Job Box ----->*/
@@ -94,8 +106,11 @@ body section#filter{
     background-color: white;
     border-radius: 5px;
     padding: 20px;
-    border-left: 5px solid hsl(180, 29%, 50%);
     box-shadow: 1px 2px 10px hsl(180, 46%, 70%);
+}
+
+.featured{
+    border-left: 5px solid hsl(180, 29%, 50%);
 }
 
 .job-listing img{
@@ -162,6 +177,12 @@ body section#filter{
     font-weight: 700;
     margin: 6px 0px;
     font-size: 15px;
+    transition: 0.2s;
+}
+
+.job-listing h2:hover{
+    color: hsl(180, 29%, 50%);
+    cursor: pointer;
 }
 
 /* <----- Third Row ----->*/
@@ -200,4 +221,70 @@ body section#filter{
     border-radius: 5px;
     color: hsl(180, 29%, 50%);
     font-weight: 700;
+    transition: 0.2s;
+}
+
+.job-listing ul.roles-languages li:hover{
+    background-color: hsl(180, 29%, 50%);
+    cursor: pointer;
+    color: white;
+}
+
+@media only screen and (min-width: 1000px){
+    #filter div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .job-listing{
+        display: grid;
+        grid-template-areas: 
+        "icon name langugaes"
+        "icon role languages"
+        "icon date languages";
+        grid-template-columns: 140px;
+        align-items: center;
+        padding: 5px 5px 20px 5px;
+    }
+
+    .job-listing img{
+        position: relative;
+        left: 20%;
+        top: 10%;
+        transform: scale(1);
+        grid-area: icon;
+    }
+
+    .job-listing .first-row{
+        grid-area: name;
+        margin: 0px;
+    }
+
+    .job-listing .first-row h2{
+        margin: 0px 15px 0px 0px;
+    }
+
+    .job-listing .first-row ul{
+        margin: 0px;
+    }
+
+    .job-listing h2{
+        grid-area: role;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .job-listing ul.employee-description{
+        grid-area: date;
+        border-bottom: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .job-listing ul.roles-languages{
+        grid-area: languages;
+        margin-bottom: 5%;
+        justify-content: end;
+    }
 }
