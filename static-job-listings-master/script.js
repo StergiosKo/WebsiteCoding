@@ -181,7 +181,6 @@ function applyFilters(){
     let newJobs = [...jobs];
     let filterList = document.querySelectorAll("#filter > div > ul > li > p");
     filterList.forEach(element => {
-      console.log(element.innerHTML + 'pp')
         if (roles.includes(element.innerHTML)){
           newJobs = newJobs.filter(function(item){
             return (item.role == element.innerHTML);
