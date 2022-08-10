@@ -9,7 +9,6 @@ const tools = ['React', 'Sass', 'Vue', 'Django', 'RoR'];
 
 filterContainer.style.display = 'none';
 
-
 // JSON
 
 const jobs = [
