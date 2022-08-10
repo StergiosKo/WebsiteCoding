@@ -181,6 +181,7 @@ function applyFilters(){
     let newJobs = [...jobs];
     let filterList = document.querySelectorAll("#filter > div > ul > li > p");
     filterList.forEach(element => {
+      console.log(element.innerHTML + 'pp')
         if (roles.includes(element.innerHTML)){
           newJobs = newJobs.filter(function(item){
             return (item.role == element.innerHTML);
@@ -257,49 +258,140 @@ function addFilter(button){
 
 
 function loadJobs(jobsArray){
-  // Creating job divs in HTML based on the current job Array given after being modified by filters
-    let displayJobs = jobsArray.map(function(item){
-        return `<div ${item.featured ? `class="job-listing featured"` : `class="job-listing"`}>
-            <img src=${item.logo} alt=${item.logo}>
-            <div class="first-row">
-                <h2> ${item.company} </h2>
-                <ul>
-                ${item.new ? '<li class="ef-new effect"> New!</li>' : ''}
-                ${item.featured ? '<li class="ef-featured effect"> Feature!</li>' : ''}
-                </ul>
-            </div>
-            <h2> ${item.position} </h2>
-            <ul class="contract-info">
-                <li> ${item.postedAt} </li>
-                <li> ${item.contract} </li>
-                <li> ${item.location} </li>
-            </ul> 
-            <ul class="filter-data-container">
-                
-                <li>${item.role}</li>
-    
-                <li>${item.level}</li>
-    
-    
-                <li>${item.languages[0]}</li>
-                ${item.languages[1] ? `<li>${item.languages[1]}</li>` : ''}
-                ${item.languages[2] ? `<li>${item.languages[2]}</li>` : ''}
-                ${item.tools[0] ? `<li>${item.tools[0]}</li>` : ''}
-                ${item.tools[1] ? `<li>${item.tools[1]}</li>` : ''}
-    
-            </ul>
-            </div>`;
-            
-    })
-    displayJobs = displayJobs.join("");;
-  
-    document.querySelector("#jobs").innerHTML = displayJobs;
-    
-    // Adding functionality on list items that can be clicked to add filters
-    buttons = document.querySelectorAll(".job-listing > .filter-data-container > li");
-    buttons.forEach(element => {
-      element.addEventListener('click', (evt) => addFilter(element))
+
+  let jobContainer = document.querySelector("#jobs");
+  jobContainer.innerHTML = '';
+  jobsArray.forEach(item => {
+
+    let parentDiv = document.createElement('div');
+    parentDiv.classList.add('job-listing');
+    if (item.featured) {parentDiv.classList.add('featured');}
+
+    let iconImg = document.createElement('img');
+    iconImg.src = item.logo;
+    parentDiv.appendChild(iconImg);
+
+    let firstRowDiv = document.createElement('div');
+    firstRowDiv.classList.add('first-row');
+    parentDiv.appendChild(firstRowDiv);
+
+    let companyName = document.createElement('h2');
+    companyName.innerText = item.company;
+    firstRowDiv.appendChild(companyName);
+
+    let listEffects = document.createElement('ul');
+    firstRowDiv.appendChild(listEffects);
+
+    if (item.new){
+      let effectNew = document.createElement('li');
+      effectNew.innerText = 'New!';
+      effectNew.classList.add('ef-new', 'effect');
+      listEffects.appendChild(effectNew);
+    }
+
+    if (item.featured){
+      let effectFeatured = document.createElement('li');
+      effectFeatured.innerText = 'Featured!';
+      effectFeatured.classList.add('ef-featured', 'effect');
+      listEffects.appendChild(effectFeatured);
+    }
+
+    let positionName = document.createElement('h2');
+    positionName.innerText = item.position;
+    parentDiv.appendChild(positionName);
+
+    let contractInfoUl = document.createElement('ul');
+    contractInfoUl.classList.add('contract-info')
+    parentDiv.appendChild(contractInfoUl);
+
+    let postedLi = document.createElement('li');
+    postedLi.innerText = item.postedAt;
+    contractInfoUl.appendChild(postedLi);
+
+    let contractLi = document.createElement('li');
+    contractLi.innerText = item.contract;
+    contractInfoUl.appendChild(contractLi);
+
+    let locationLi = document.createElement('li');
+    locationLi.innerText = item.location;
+    contractInfoUl.appendChild(locationLi);
+
+
+    let filterDataContainer = document.createElement('ul');
+    filterDataContainer.classList.add('filter-data-container');
+    parentDiv.appendChild(filterDataContainer);
+
+    let roleLi = document.createElement('li');
+    roleLi.innerText = item.role;
+    filterDataContainer.appendChild(roleLi);
+    roleLi.addEventListener('click', (evt) => addFilter(roleLi))
+
+    let levelLi = document.createElement('li');
+    levelLi.innerText = item.level;
+    filterDataContainer.appendChild(levelLi);
+    levelLi.addEventListener('click', (evt) => addFilter(levelLi))
+
+    item.languages.forEach(element => {
+      let languageLi = document.createElement('li');
+      languageLi.innerText = element;
+      filterDataContainer.appendChild(languageLi);
+      languageLi.addEventListener('click', (evt) => addFilter(languageLi))
     });
+
+    item.tools.forEach(element => {
+      let toolsLi = document.createElement('li');
+      toolsLi.innerText = element;
+      filterDataContainer.appendChild(toolsLi);
+      toolsLi.addEventListener('click', (evt) => addFilter(toolsLi))
+    });
+
+    jobContainer.appendChild(parentDiv);
+
+  });
+
+  // // Creating job divs in HTML based on the current job Array given after being modified by filters
+  //   let displayJobs = jobsArray.map(function(item){
+  //       return `<div ${item.featured ? `class="job-listing featured"` : `class="job-listing"`}>
+  //           <img src=${item.logo} alt=${item.logo}>
+  //           <div class="first-row">
+  //               <h2> ${item.company} </h2>
+  //               <ul>
+  //               ${item.new ? '<li class="ef-new effect"> New!</li>' : ''}
+  //               ${item.featured ? '<li class="ef-featured effect"> Feature!</li>' : ''}
+  //               </ul>
+  //           </div>
+  //           <h2> ${item.position} </h2>
+  //           <ul class="contract-info">
+  //               <li> ${item.postedAt} </li>
+  //               <li> ${item.contract} </li>
+  //               <li> ${item.location} </li>
+  //           </ul> 
+  //           <ul class="filter-data-container">
+                
+  //               <li>${item.role}</li>
+    
+  //               <li>${item.level}</li>
+    
+    
+  //               <li>${item.languages[0]}</li>
+  //               ${item.languages[1] ? `<li>${item.languages[1]}</li>` : ''}
+  //               ${item.languages[2] ? `<li>${item.languages[2]}</li>` : ''}
+  //               ${item.tools[0] ? `<li>${item.tools[0]}</li>` : ''}
+  //               ${item.tools[1] ? `<li>${item.tools[1]}</li>` : ''}
+    
+  //           </ul>
+  //           </div>`;
+            
+  //   })
+  //   displayJobs = displayJobs.join("");;
+  
+  //   document.querySelector("#jobs").innerHTML = displayJobs;
+    
+  //   // Adding functionality on list items that can be clicked to add filters
+  //   buttons = document.querySelectorAll(".job-listing > .filter-data-container > li");
+  //   buttons.forEach(element => {
+  //     element.addEventListener('click', (evt) => addFilter(element))
+  //   });
     
 }
 
