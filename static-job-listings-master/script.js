@@ -1,12 +1,16 @@
-const button = document.querySelector("#test-button");
 const clearFilterButton = document.querySelector("#clear-button");
+const filterContainer = document.querySelector("#filter");
 
 const roles = ['Frontend', 'Backend', 'Fullstack'];
 const level = ['Junior', 'Midweight', 'Senior'];
 const languages = ['Python', 'Ruby', 'JavaScript', 'HTML', 'CSS'];
 const tools = ['React', 'Sass', 'Vue', 'Django', 'RoR'];
 
-///// JSON
+
+filterContainer.style.display = 'none';
+
+
+// JSON
 
 const jobs = [
     {
@@ -170,6 +174,7 @@ clearFilterButton.addEventListener('click', function(){
     document.querySelector("#filter > div > ul").innerHTML = '';
     document.querySelector("#jobs").innerHTML = '';
     loadJobs(jobs);
+    filterContainer.style.display = 'none';
 })
 
 function applyFilters(){
@@ -205,13 +210,25 @@ function applyFilters(){
 }
 
 function addFilter(button){
+  document.querySelector("#filter").style.display = 'block';
   // Button that initiated function
   string = button.innerHTML;
+
+  // Check if there is already that filter and if true exit function
+
+  var duplication = false;
+  document.querySelectorAll("#filter > div > ul > li > p").forEach(element => {
+    if (string == element.innerHTML){
+      duplication = true;
+    }
+  });
+  if (duplication) {return;}
 
   // Creating elements to add in HTML
   let filterList = document.querySelector("#filter > div > ul");
   let elLi = document.createElement('li');
   let elP = document.createElement('p');
+  
 
   // Text of filter
   elP.textContent = string;
@@ -223,6 +240,12 @@ function addFilter(button){
   elImg.addEventListener('click', function(){
     elImg.parentElement.remove();
     applyFilters();
+
+    // If filter container doesn't have more filters hide it
+
+    if (!filterList.children.length >= 1){
+      filterContainer.style.display = 'none';
+    }
   })
 
   // Finishing appending
@@ -246,12 +269,12 @@ function loadJobs(jobsArray){
                 </ul>
             </div>
             <h2> ${item.position} </h2>
-            <ul class="employee-description">
+            <ul class="contract-info">
                 <li> ${item.postedAt} </li>
                 <li> ${item.contract} </li>
                 <li> ${item.location} </li>
             </ul> 
-            <ul class="roles-languages">
+            <ul class="filter-data-container">
                 
                 <li>${item.role}</li>
     
@@ -273,7 +296,7 @@ function loadJobs(jobsArray){
     document.querySelector("#jobs").innerHTML = displayJobs;
     
     // Adding functionality on list items that can be clicked to add filters
-    buttons = document.querySelectorAll(".job-listing > .roles-languages > li");
+    buttons = document.querySelectorAll(".job-listing > .filter-data-container > li");
     buttons.forEach(element => {
       element.addEventListener('click', (evt) => addFilter(element))
     });
