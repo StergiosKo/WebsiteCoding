@@ -245,25 +245,27 @@ body section#filter{
     .job-listing{
         display: grid;
         grid-template-areas: 
-        "icon name langugaes"
-        "icon role languages"
-        "icon date languages";
-        grid-template-columns: 140px;
+        ". name ."
+        ". role languages"
+        ". date .";
+        grid-template-columns: 120px;
+        grid-template-rows: 30px auto 30px;
         align-items: center;
-        padding: 5px 5px 20px 5px;
+        padding: auto;
     }
 
     .job-listing img{
-        position: relative;
-        left: 15%;
-        top: 9%;
         transform: scale(1);
         grid-area: icon;
+        position: absolute;
+        left: 3%;
+        top: 20%;
     }
 
     .job-listing .first-row{
         grid-area: name;
         margin: 0px;
+        padding-top: 5px;
     }
 
     .job-listing .first-row h2{
@@ -277,19 +279,20 @@ body section#filter{
     .job-listing h2{
         grid-area: role;
         font-size: 18px;
-        margin-bottom: 20px;
+        margin: 0px;
     }
 
     .job-listing ul.contract-info{
         grid-area: date;
         border-bottom: none;
         margin: 0px;
-        padding: 0px;
+        padding: 5px 0px 0px 0px;
+        align-self: start;
     }
 
     .job-listing ul.filter-data-container{
         grid-area: languages;
-        margin-bottom: 5%;
         justify-content: end;
+        margin: 0px;
     }
 }
