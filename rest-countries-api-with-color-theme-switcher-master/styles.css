@@ -6,6 +6,7 @@
     --element-bg-color: hsl(209, 23%, 22%);
     --text-color: hsl(0, 0%, 100%);  
     --shadow-color: black;
+    --svg-invert: 1;
 }
 
 /* Light Mode Theme */
@@ -14,6 +15,7 @@
     --element-bg-color: hsl(0, 0%, 100%);
     --text-color: hsl(200, 15%, 8%);
     --shadow-color: lightgray;
+    --svg-invert: 0;
 }
 
 
@@ -33,17 +35,25 @@ body {
 }
 
 header{
+    display: flex;
     background-color: var(--element-bg-color);
-    box-shadow: 0px 1px 15px var(--shadow-color);
+    box-shadow: 0px 1px 5px var(--shadow-color);
+    height: 80px;
+    align-items: center;
 }
 
 header div{
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     font-weight: 800;
-    padding: 0px 50px;
+    padding: 0px 2%;
+}
+
+header div h1{
+    font-size: 18px;
 }
 
 header div div{
@@ -60,5 +70,189 @@ header div img{
     height: 18px;
     vertical-align: sub;
     margin-right: 5px;
-    filter: invert(0.5);
+    filter: invert(var(--svg-invert));
+}
+
+header div div{
+    display: block;
+    width: auto;
+}
+
+section#filters{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 3% 4%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section#filters div.input-container{
+    background-color: var(--element-bg-color);
+    width: 370px;
+    text-align: left;
+    padding: 15px 35px;
+    border-radius: 5px;
+    border: 0px;
+    box-shadow: 0px 1px 2px var(--shadow-color);
+}
+
+section#filters div.input-container img{
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: sub;
+    margin-right: 5px;
+    filter: invert(var(--svg-invert));
+}
+
+section#filters div.input-container input{
+    background-color: inherit;
+    color: var(--text-color);
+    border: 0px;
+    font-size: 15px;
+    font-family: 'Nunito Sans', sans-serif;
+    resize: none;
+    outline: none;
+    font-weight: 400;
+    width: 85%;
+}
+
+
+section#filters div.input-container input::placeholder{
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+section#filters div{
+    font-weight: 600;
+}
+
+section#filters div button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 15px;
+    padding: 15px 25px;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--element-bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    box-shadow: 0px 1px 2px var(--shadow-color);
+    width: 200px;
+    text-align: left;
+}
+
+section#filters div button:hover{
+    cursor: pointer;
+}
+
+section#filters div button img{
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    filter: invert(var(--svg-invert));
+}
+
+
+section#filters div.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+section#filters div.dropdown div{
+    display: none;
+    position: absolute;
+}
+
+section#filters div.dropdown:hover div{
+    display: block;
+}
+
+#filters div ul.dropdown-content{
+    background-color: var(--element-bg-color);
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    width: 140px;
+    padding: 10px 30px;
+    margin-top: 10px;
+    color: var(--text-color);
+    box-shadow: 0px 1px 1px var(--shadow-color);
+}
+
+#filters div ul.dropdown-content li{
+    margin: 10px 0px;
+}
+
+section#countries-container{
+    padding: 1% 4%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.country{
+    background-color: var(--element-bg-color);
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    width: 350px;
+    cursor: pointer;
+}
+
+.country img{
+    width: 100%;
+    max-height: 175px;
+    /* object-fit: fill; */
+    border-radius: 5px 5px 0px 0px;
+}
+
+.country div{
+    padding: 10px 25px;
+    font-size: 15px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--text-color);
+}
+
+.country div h1{
+    margin: 10px 0px 0px 0px;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.country div ul{
+    list-style: none;
+    padding-left: 0px;
+    margin: 15px 0px;
+}
+
+
+.country div ul li h2{
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 5px 0px;
+}
+
+.country div ul li p{
+    display: inline-block;
+    margin: 0px 0px 0px 5px;
+}
+
+@media only screen and (max-width: 580px){
+
+    section#countries-container{
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
 }
