@@ -76,6 +76,7 @@ async function createCountry(countryData) {
 
     // Region
     let regionLi = document.createElement('li');
+    regionLi.classList.add('region')
     let regionHeader = document.createElement('h2');
     regionHeader.textContent = 'Region:';
     regionLi.appendChild(regionHeader);
@@ -112,3 +113,25 @@ function toggleLightDarkMode(){
         body.setAttribute('data-theme', 'default')
     }
 }
+
+function filterByRegion(region){
+    let countriesRegions = countriesContainer.querySelectorAll('div.country > div > ul > li.region > p');
+
+    if (region != 'All'){
+        countriesRegions.forEach(element => {
+            if (element.textContent !== region){
+                element.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
+            }
+            else{
+                element.parentElement.parentElement.parentElement.parentElement.style.display = 'block';
+            }
+        });
+    }
+    else{
+        countriesRegions.forEach(element => {
+            element.parentElement.parentElement.parentElement.parentElement.style.display = 'block';
+        });
+    }
+
+}
+
