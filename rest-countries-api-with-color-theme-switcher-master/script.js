@@ -43,7 +43,15 @@ async function createCountry(countryData) {
     // Parent
     let parentDiv = document.createElement('div');
     parentDiv.classList.add('country');
+    parentDiv.setAttribute('data-region-filter', 'true');
+    parentDiv.setAttribute('data-name-filter', 'true');
+    parentDiv.addEventListener('click', function(){
+        sessionStorage.setItem('countryName' ,countryData.cca2);
+        location.href = 'details.html';
+    })
     countriesContainer.appendChild(parentDiv);
+
+    // Should put parameters in url instead of sessionstorage
 
     // Image
     let flagImg = document.createElement('img');
@@ -115,23 +123,70 @@ function toggleLightDarkMode(){
 }
 
 function filterByRegion(region){
-    let countriesRegions = countriesContainer.querySelectorAll('div.country > div > ul > li.region > p');
+    let countries = countriesContainer.querySelectorAll('div.country');
 
     if (region != 'All'){
-        countriesRegions.forEach(element => {
-            if (element.textContent !== region){
-                element.parentElement.parentElement.parentElement.parentElement.style.display = 'none';
+        countries.forEach(element => {
+            regionName = element.querySelector('div > ul > li.region > p');
+            if (regionName.textContent !== region){
+                element.dataset.regionFilter = 'false';
             }
             else{
-                element.parentElement.parentElement.parentElement.parentElement.style.display = 'block';
+                element.dataset.regionFilter = 'true';
             }
         });
     }
     else{
-        countriesRegions.forEach(element => {
-            element.parentElement.parentElement.parentElement.parentElement.style.display = 'block';
+        countries.forEach(element => {
+            element.dataset.regionFilter = 'true';
         });
     }
+    showCountries();
 
 }
 
+function searchFunction(){
+    let inputText = document.querySelector('#searchInput').value.toUpperCase();
+    let countries = document.querySelectorAll(".country");
+    
+    countries.forEach(element => {
+        let name = element.querySelector("h1");
+        name = name.textContent;
+        if (name.toUpperCase().indexOf(inputText) > -1){
+            element.dataset.nameFilter = 'true';
+        }
+        else{
+            element.dataset.nameFilter = 'false';
+        }
+    });
+    showCountries();
+}
+
+function showCountries(){
+    let countries = document.querySelectorAll(".country");
+
+    countries.forEach(element => {
+        if (element.dataset.regionFilter == 'true' && element.dataset.nameFilter == 'true'){
+            element.style.display = 'block';
+        }
+        else{
+            element.style.display = 'none';
+        }
+    });
+}
+
+//get all the elements with calss list-group-item
+document.querySelectorAll('ul.dropdown-content > li').forEach(function(item) {
+    // iterate and add event lstener to each of them
+    item.addEventListener('click', function(elem) {
+      // check if any element have a class active
+      // if so then remove the class from it
+      let getElemWithClass = document.querySelector('.active');
+      if (getElemWithClass !== null) {
+        getElemWithClass.classList.remove('active');
+      }
+      //add the active class to the element from which click event triggered
+      item.classList.add('active')
+  
+    })
+  })

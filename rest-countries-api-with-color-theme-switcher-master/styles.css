@@ -7,6 +7,8 @@
     --text-color: hsl(0, 0%, 100%);  
     --shadow-color: black;
     --svg-invert: 1;
+    --hover-color: hsl(172, 28%, 54%);
+    --active-color: rgb(48, 142, 197);
 }
 
 /* Light Mode Theme */
@@ -16,6 +18,8 @@
     --text-color: hsl(200, 15%, 8%);
     --shadow-color: lightgray;
     --svg-invert: 0;
+    --hover-color: rgb(148, 126, 126);
+    --active-color: red;
 }
 
 
@@ -116,12 +120,14 @@ section#filters div.input-container input{
     outline: none;
     font-weight: 400;
     width: 85%;
+    transition: color .45s ease-in;
 }
 
 
 section#filters div.input-container input::placeholder{
     color: var(--text-color);
     opacity: 0.7;
+    transition: color .45s ease-in;
 }
 
 section#filters div{
@@ -143,6 +149,7 @@ section#filters div button{
     box-shadow: 0px 1px 2px var(--shadow-color);
     width: 200px;
     text-align: left;
+    transition: color .45s ease-in;
 }
 
 section#filters div button:hover{
@@ -174,6 +181,11 @@ section#filters div.dropdown:hover div{
 
 section#filters div.dropdown li:hover{
     cursor: pointer;
+    color: var(--hover-color);
+}
+
+section#filters div.dropdown li.active{
+    color: var(--active-color);
 }
 
 #filters div ul.dropdown-content{
@@ -190,7 +202,7 @@ section#filters div.dropdown li:hover{
 }
 
 #filters div ul.dropdown-content li{
-    margin: 10px 0px;
+    margin: 8px 0px;
 }
 
 section#countries-container{
@@ -261,12 +273,158 @@ section#countries-container{
     margin: 0px 0px 0px 5px;
 }
 
-@media only screen and (max-width: 580px){
 
-    section#countries-container{
+/* For Details html Page specific */
+
+#main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#main-content .details-button{
+    padding: 4px 20px;
+    margin: 0px 5px;
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--text-color);
+    background-color: var(--element-bg-color);
+    box-shadow: 0px 0px 3px var(--shadow-color);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    transition: color .45s ease-in;
+}
+
+#main-content .back-button{
+    align-self: flex-start;
+    margin: 5% 10%;
+    padding: 8px 20px;
+    font-weight: 400;
+    border: none;
+}
+
+#main-content #country-container{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#main-content button img{
+    width: 18px;
+    height: 18px;
+    vertical-align: sub;
+    margin: 0px 5px -1px 0px;
+    filter: invert(var(--svg-invert));
+}
+
+#main-content img{
+    width: 600px;
+    height: 400px;
+}
+
+#main-content h1{
+    font-size: 35px;
+}
+
+#main-content #country-container div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+#main-content div ul{
+    list-style: none;
+    font-size: 15px;
+    padding-left: 0px;
+}
+
+#main-content div#lists-container{
+    margin-left: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div#lists-container ul li{
+    margin: 10px 50px 10px 0px
+}
+
+#main-content h2{
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-block;
+    margin: 0px;
+}
+
+#main-content li p{
+    display: inline-block;
+    font-size: 15px;
+    margin: 0px;
+}
+
+
+
+@media only screen and (max-width: 700px){
+
+    /* section#countries-container{
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
+    } */
+
+    section#filters{
+        flex-direction: column;
+        align-items: flex-start;
     }
+
+    section#filters div.input-container{
+        width: 90%;
+        padding: 15px 4%;
+    }
+
+    section#filters div.dropdown{
+        margin-top: 30px;
+        align-self: flex-start;
+    }
+
+
+
+    /* Details HTML */
+
+    #main-content #country-container{
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    #main-content #country-container{
+        flex-direction: column;
+    }
+
+    #main-content #country-container img{
+        object-fit: cover;
+        width: 100%;
+        height: 20%;
+        margin: auto;
+    }
+
+    #main-content #country-container div{
+        margin-left: 0px;
+    }
+
+    #main-content div#lists-container div{
+        flex-direction: column;
+    }
+
+    #main-content div#lists-container{
+        flex-direction: column;
+    }
+    
 }

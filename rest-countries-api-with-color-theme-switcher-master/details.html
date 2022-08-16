@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Countries Rest API Details </title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scriptDetails.js" defer> 0 </script>
+</head>
+<body data-theme="default">
+
+    <header>
+        <div>
+            <h1> Where in the world? </h1>
+            <div onclick="toggleLightDarkMode()"> <img src="images/moon.svg"> Dark Mode </div>
+        </div>
+    </header>  
+    
+    
+
+    <section id="main-content">
+
+        <button class="details-button back-button" onclick="returnMain()"> <img src="images/arrow-left.svg"> Back </button>
+
+        <div id="country-container">
+            <img id="country-flag">
+            
+            <div>
+                <h1 id="official-name">Name</h1>
+
+                <div id="lists-container">
+
+                    <ul>
+                        <li> <h2> Native Name: </h2> <p id="native-name"> </p></li>
+                        <li> <h2> Population: </h2> <p id="population"> </p></li>
+                        <li> <h2> Region: </h2> <p id="region"> </p></li>
+                        <li> <h2> Sub Region: </h2> <p id="sub-region"> </p></li>
+                        <li> <h2> Capital: </h2> <p id="capital"> </p></li>
+                    </ul>
+    
+                    <ul>
+                        <li> <h2> Top Level Domain: </h2> <p id="top-level-domain"> </p></li>
+                        <li> <h2> Currencies: </h2> <p id="currencies"> </p></li>
+                        <li> <h2> Languages: </h2> <p id="languages"> </p></li>
+                    </ul>
+
+                </div>
+
+
+                <ul id="borders-container">
+                    <h2>Border Countries: </h2>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+  
+</body>
+</html>
