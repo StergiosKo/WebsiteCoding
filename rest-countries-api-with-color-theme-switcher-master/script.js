@@ -46,8 +46,11 @@ async function createCountry(countryData) {
     parentDiv.setAttribute('data-region-filter', 'true');
     parentDiv.setAttribute('data-name-filter', 'true');
     parentDiv.addEventListener('click', function(){
-        sessionStorage.setItem('countryName' ,countryData.cca2);
-        location.href = 'details.html';
+        // sessionStorage.setItem('countryName' ,countryData.cca2);
+        // location.href = 'details.html?country=' + countryData.cca2;
+        var para = new URLSearchParams();
+        para.append("country", countryData.cca2);
+        location.href = "details.html?" + para.toString();
     })
     countriesContainer.appendChild(parentDiv);
 

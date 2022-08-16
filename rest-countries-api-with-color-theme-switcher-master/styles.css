@@ -308,7 +308,7 @@ section#countries-container{
 }
 
 #main-content #country-container{
-    width: 85%;
+    width: 95%;
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -337,12 +337,14 @@ section#countries-container{
     display: flex;
     flex-direction: column;
     margin-left: 5%;
+    flex-wrap: wrap;
 }
 
 #main-content div ul{
     list-style: none;
-    font-size: 15px;
+    font-size: 14px;
     padding-left: 0px;
+    font-weight: 400;
 }
 
 #main-content div#lists-container{
@@ -368,6 +370,16 @@ div#lists-container ul li{
     font-size: 15px;
     margin: 0px;
 }
+
+#main-content #borders-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+}
+
 
 
 
