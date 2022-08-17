@@ -117,79 +117,103 @@ function toggleLightDarkMode(){
     var body = document.querySelector('body');
     if (body.getAttribute('data-theme') == 'default'){
         body.removeAttribute('data-theme');
-        body.setAttribute('data-theme', 'light')
+        body.setAttribute('data-theme', 'light');
+        sessionStorage.setItem('mode', 'light');
     }
     else{
         body.removeAttribute('data-theme');
-        body.setAttribute('data-theme', 'default')
+        body.setAttribute('data-theme', 'default');
+        sessionStorage.setItem('mode', 'dark');
     }
 }
 
 function filterByRegion(region){
-    let countries = countriesContainer.querySelectorAll('div.country');
+    countriesContainer.innerHTML = '';
 
     if (region != 'All'){
-        countries.forEach(element => {
-            regionName = element.querySelector('div > ul > li.region > p');
-            if (regionName.textContent !== region){
-                element.dataset.regionFilter = 'false';
-            }
-            else{
-                element.dataset.regionFilter = 'true';
-            }
-        });
+
+        fetch('https://restcountries.com/v3.1/region/' + region.toLowerCase())
+        .then(res =>{return res.json()})
+        .then(data=>{
+            data.forEach(country => {
+                createCountry(country);
+            })
+        })
+        .catch(error=>console.log(error))
     }
     else{
-        countries.forEach(element => {
-            element.dataset.regionFilter = 'true';
-        });
+        createAllCountries()
     }
-    showCountries();
+    // showCountries();
 
 }
+
 
 function searchFunction(){
-    let inputText = document.querySelector('#searchInput').value.toUpperCase();
-    let countries = document.querySelectorAll(".country");
+
+    //Delaying the function execute
+    if (this.timer) {
+        window.clearTimeout(this.timer);
+    }
+    this.timer = window.setTimeout(function() {
     
-    countries.forEach(element => {
-        let name = element.querySelector("h1");
-        name = name.textContent;
-        if (name.toUpperCase().indexOf(inputText) > -1){
-            element.dataset.nameFilter = 'true';
+        //Execute the function code here...
+        countriesContainer.innerHTML = '';
+        removeActiveItem()
+        let inputText = document.querySelector('#searchInput').value.toLowerCase();
+
+        if(inputText != ''){
+        
+            fetch('https://restcountries.com/v3.1/name/' + inputText)
+            .then(res =>{return res.json()})
+            .then(data=>{
+                data.forEach(country => {
+                    createCountry(country);
+                })
+            })
+            .catch(error=>console.log(error))
         }
         else{
-            element.dataset.nameFilter = 'false';
+            createAllCountries()
         }
-    });
-    showCountries();
+
+    
+    }, 500);
 }
 
-function showCountries(){
-    let countries = document.querySelectorAll(".country");
+// function showCountries(){
+//     let countries = document.querySelectorAll(".country");
 
-    countries.forEach(element => {
-        if (element.dataset.regionFilter == 'true' && element.dataset.nameFilter == 'true'){
-            element.style.display = 'block';
-        }
-        else{
-            element.style.display = 'none';
-        }
-    });
+//     countries.forEach(element => {
+//         if (element.dataset.regionFilter == 'true' && element.dataset.nameFilter == 'true'){
+//             element.style.display = 'block';
+//         }
+//         else{
+//             element.style.display = 'none';
+//         }
+//     });
+// }
+
+function removeActiveItem(){
+    let getElemWithClass = document.querySelector('.active');
+    if (getElemWithClass !== null) {
+      getElemWithClass.classList.remove('active');
+    }
 }
 
-//get all the elements with calss list-group-item
+//get all the elements list-group-item
 document.querySelectorAll('ul.dropdown-content > li').forEach(function(item) {
     // iterate and add event lstener to each of them
     item.addEventListener('click', function(elem) {
       // check if any element have a class active
       // if so then remove the class from it
-      let getElemWithClass = document.querySelector('.active');
-      if (getElemWithClass !== null) {
-        getElemWithClass.classList.remove('active');
-      }
+      removeActiveItem()
       //add the active class to the element from which click event triggered
       item.classList.add('active')
   
     })
-  })
+})
+
+if (sessionStorage.getItem('mode') == 'light'){
+    toggleLightDarkMode();
+}

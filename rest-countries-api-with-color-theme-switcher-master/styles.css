@@ -18,14 +18,14 @@
     --text-color: hsl(200, 15%, 8%);
     --shadow-color: lightgray;
     --svg-invert: 0;
-    --hover-color: rgb(148, 126, 126);
+    --hover-color: rgb(209, 162, 162);
     --active-color: red;
 }
 
 
 body {
     padding: 0px;
-    margin: 0px;
+    margin: 0px auto;
     background-color: var(--body-bg-color);
     color: var(--text-color);
     font-size: 15px;
@@ -36,6 +36,11 @@ body {
 .light-mode {
     background-color: var(--element-bg-color);
     color: black;
+}
+
+section#main{
+    max-width: 1280px;
+    margin: auto;
 }
 
 header{
@@ -53,11 +58,11 @@ header div{
     justify-content: space-between;
     align-items: center;
     font-weight: 800;
-    padding: 0px 2%;
+    padding: 0px 8%;
 }
 
 header div h1{
-    font-size: 18px;
+    font-size: 22px;
 }
 
 header div div{
@@ -86,14 +91,14 @@ section#filters{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 3% 4%;
+    margin: 3% 0px;
     justify-content: space-between;
     align-items: center;
 }
 
 section#filters div.input-container{
     background-color: var(--element-bg-color);
-    width: 370px;
+    width: 410px;
     text-align: left;
     padding: 15px 35px;
     border-radius: 5px;
@@ -139,7 +144,7 @@ section#filters div button{
     flex-direction: row;
     justify-content: space-between;
     font-size: 15px;
-    padding: 15px 25px;
+    padding: 16px 25px;
     font-family: 'Nunito Sans', sans-serif;
     background-color: var(--element-bg-color);
     color: var(--text-color);
@@ -206,11 +211,11 @@ section#filters div.dropdown li.active{
 }
 
 section#countries-container{
-    padding: 1% 4%;
+    padding: 1% 0px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .country{
@@ -220,8 +225,9 @@ section#countries-container{
     box-shadow: 1px 1px 2px var(--shadow-color);
     display: flex;
     flex-direction: column;
-    margin: 50px 30px;
-    width: 350px;
+    margin: 30px 5px;
+    width: 255px;
+    max-height: 340px;
     cursor: pointer;
 }
 
@@ -237,7 +243,7 @@ section#countries-container{
     top: -200px; */
     object-fit: cover;
     width: 100%;
-    height: 200px;
+    height: 157px;
     border-radius: 5px 5px 0px 0px;
 }
 
@@ -308,12 +314,12 @@ section#countries-container{
 }
 
 #main-content #country-container{
-    width: 95%;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 #main-content button img{
@@ -324,19 +330,20 @@ section#countries-container{
     filter: invert(var(--svg-invert));
 }
 
-#main-content img{
-    width: 600px;
-    height: 400px;
+#main-content #flag-container img{
+    width: 100%;
 }
 
 #main-content h1{
     font-size: 35px;
 }
 
+
+
 #main-content #country-container div{
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
+    margin-left: 2%;
     flex-wrap: wrap;
 }
 
@@ -371,19 +378,49 @@ div#lists-container ul li{
     margin: 0px;
 }
 
+
+#main-content section#borders{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
 #main-content #borders-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
+    gap: 10px;
+    grid-auto-rows: 30px;
+    margin: 0px;
 }
 
 
+#main-content #borders-container li:hover{
+    background-color: var(--hover-color)
+}
 
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 1280px){
+
+    section#countries-container{
+        justify-content: center;
+    }
+
+    section#countries-container .country{
+        margin: 20px 20px;
+    }
+
+    section#filters div.input-container{
+        margin: 0px 4%;
+        width: 320px;
+    }
+
+    section#filters div.dropdown{
+        margin: 0px 4%;
+    }
+
+}
+
+
+@media only screen and (max-width: 920px){
 
     /* section#countries-container{
         flex-direction: column;
@@ -392,51 +429,88 @@ div#lists-container ul li{
         align-items: center;
     } */
 
+    header div{
+        padding: 5%;
+    }
+
+    header div h1{
+        font-size: 16px;
+    }
+
+    header div div{
+        font-size: 14px;
+    }
+
     section#filters{
         flex-direction: column;
         align-items: flex-start;
     }
 
     section#filters div.input-container{
-        width: 90%;
+        width: 85%;
         padding: 15px 4%;
+        margin: auto auto;
     }
 
     section#filters div.dropdown{
         margin-top: 30px;
         align-self: flex-start;
+        padding-left: 4%;
     }
 
 
-
-    /* Details HTML */
-
-    #main-content #country-container{
-        margin-top: 20px;
+    #main-content section#borders{
         flex-direction: column;
+        display: flex;
     }
 
-    #main-content #country-container{
-        flex-direction: column;
+
+    #main-content #borders-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 100px);
+        gap: 5px;
+        grid-auto-rows: 30px;
+        margin: 10px 0px;
+        align-items: center;
     }
 
-    #main-content #country-container img{
-        object-fit: cover;
-        width: 100%;
-        height: 20%;
-        margin: auto;
+    #main-content #borders-container li{
+        font-size: 13px;
+        padding: 2px 5px;
     }
 
-    #main-content #country-container div{
-        margin-left: 0px;
-    }
+        /* Details HTML */
 
-    #main-content div#lists-container div{
-        flex-direction: column;
-    }
-
-    #main-content div#lists-container{
-        flex-direction: column;
-    }
+        #main-content #country-container{
+            margin-top: 20px;
+            flex-direction: column;
+        }
+        
+        #main-content #country-container{
+            display: flex;
+            flex-direction: column;
+            width: 95%;
+            margin: 20px auto;
+        }
+        
+        #main-content #country-container img{
+            object-fit: cover;
+            width: 100%;
+            height: 20%;
+            margin: auto;
+        }
+        
+        #main-content #country-container div#details-text-container{
+            margin-left: 17px;
+            align-self: flex-start;
+        }
+        
+        #main-content div#lists-container div{
+            flex-direction: column;
+        }
+        
+        #main-content div#lists-container{
+            flex-direction: column;
+        }
     
 }

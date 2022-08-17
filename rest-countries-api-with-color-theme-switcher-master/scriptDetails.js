@@ -2,11 +2,13 @@ function toggleLightDarkMode(){
     var body = document.querySelector('body');
     if (body.getAttribute('data-theme') == 'default'){
         body.removeAttribute('data-theme');
-        body.setAttribute('data-theme', 'light')
+        body.setAttribute('data-theme', 'light');
+        sessionStorage.setItem('mode', 'light');
     }
     else{
         body.removeAttribute('data-theme');
-        body.setAttribute('data-theme', 'default')
+        body.setAttribute('data-theme', 'default');
+        sessionStorage.setItem('mode', 'dark');
     }
 }
 
@@ -16,7 +18,6 @@ function toggleLightDarkMode(){
 
 async function displayCountry() {
     let params = new URLSearchParams(window.location.search)
-    console.log(params.get('country'))
     let countryUrl = params.get('country')
 
     const res = await fetch("https://restcountries.com/v3.1/alpha/" + countryUrl)
@@ -62,28 +63,43 @@ async function displayCountry() {
 
     // Borders
     bordersContainer = document.querySelector('#borders-container');
-    countryData.borders.forEach(element => {
+    if (countryData.borders !== undefined){
+        countryData.borders.forEach(element => {
 
-        let countryListItem = document.createElement('li');
-        countryListItem.classList.add('details-button');
-        bordersContainer.appendChild(countryListItem);
+            let countryListItem = document.createElement('li');
+            countryListItem.classList.add('details-button');
+            bordersContainer.appendChild(countryListItem);
+    
+            fetch("https://restcountries.com/v3.1/alpha/" + element)
+            .then((response) => response.json())
+            .then((data) => countryListItem.textContent = data[0].name.common)
+            .then((data) => countryListItem.addEventListener('click', function(){
+                sessionStorage.setItem('countryName' ,data.cca2);
+                var url = new URL(window.location);
+                var search_params = url.searchParams;
+                search_params.set('country', element);
+                var new_url = url.toString();
+                location.href = new_url;
+            }));     
+        });
+    }
+    else{
+        bordersContainer.querySelector('h2').textContent += 'None'
+    }
 
-        fetch("https://restcountries.com/v3.1/alpha/" + element)
-        .then((response) => response.json())
-        .then((data) => countryListItem.textContent = data[0].name.common)
-        .then((data) => countryListItem.addEventListener('click', function(){
-            sessionStorage.setItem('countryName' ,data.cca2);
-            var url = new URL(window.location);
-            var search_params = url.searchParams;
-            search_params.set('country', element);
-            var new_url = url.toString();
-            location.href = new_url;
-        }));     
-    });
 }
-  
+
+if (sessionStorage.getItem('mode') == 'light'){
+    toggleLightDarkMode();
+}
+
 displayCountry();
 
 function returnMain(){
-    location.href = 'index.html';
+    var para = new URLSearchParams();
+    if (document.querySelector('body').getAttribute('data-theme') == 'light'){
+        para.append("light-mode", 'true');
+    }
+    location.href = "index.html?" + para.toString();
 }
+
