@@ -215,7 +215,8 @@ section#countries-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 70px;
 }
 
 .country{
@@ -225,7 +226,7 @@ section#countries-container{
     box-shadow: 1px 1px 2px var(--shadow-color);
     display: flex;
     flex-direction: column;
-    margin: 30px 5px;
+    margin: 30px 0px;
     width: 255px;
     max-height: 340px;
     cursor: pointer;
@@ -318,8 +319,6 @@ section#countries-container{
     display: grid;
     grid-template-columns: 50% 50%;
     gap: 20px;
-    align-items: center;
-    justify-content: center;
 }
 
 #main-content button img{
@@ -331,7 +330,9 @@ section#countries-container{
 }
 
 #main-content #flag-container img{
-    width: 100%;
+    width: 70%;
+    height: 70%;
+    margin: auto;
 }
 
 #main-content h1{
@@ -358,7 +359,7 @@ section#countries-container{
     margin-left: 0px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 div#lists-container ul li{
