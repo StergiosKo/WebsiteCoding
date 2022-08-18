@@ -3,24 +3,6 @@ const greeceUrl = "https://restcountries.com/v3.1/alpha/gr";
 
 const countriesContainer = document.querySelector('#countries-container');
 
-let allData = {};
-
-fetch(countriesDataUrl)
-.then(data =>{return data.json()})
-.then(res=>{console.log(res)})
-.catch(error=>console.log(error))
-
-let grData = {};
-
-// async function foo() {
-//     const res = await fetch(greeceUrl)
-  
-//     grData = await res.json();
-  
-//     console.log(grData)
-// }
-  
-// foo();
 
 async function createAllCountries(){
     const res = await fetch(countriesDataUrl);
@@ -34,11 +16,6 @@ async function createAllCountries(){
 createAllCountries();
 
 async function createCountry(countryData) {
-    // const res = await fetch(url)
-  
-    // grData = await res.json();
-    // grData = grData[0];
-    // console.log(grData)
 
     // Parent
     let parentDiv = document.createElement('div');
@@ -129,20 +106,33 @@ function toggleLightDarkMode(){
 
 function filterByRegion(region){
     countriesContainer.innerHTML = '';
+    let searchInput = document.querySelector('#searchInput');
 
-    if (region != 'All'){
+    if (region !== 'All'){
 
-        fetch('https://restcountries.com/v3.1/region/' + region.toLowerCase())
-        .then(res =>{return res.json()})
-        .then(data=>{
-            data.forEach(country => {
-                createCountry(country);
+        
+        if (!searchInput.value){
+            fetch('https://restcountries.com/v3.1/region/' + region.toLowerCase())
+            .then(res =>{return res.json()})
+            .then(data=>{
+                data.forEach(country => {
+                    createCountry(country);
+                })
             })
-        })
-        .catch(error=>console.log(error))
+            .catch(error=>console.log(error))
+        }
+        else{
+            searchFunction();
+        }
+
     }
     else{
-        createAllCountries()
+        if (!searchInput.value){
+            createAllCountries()
+        }
+        else{
+            searchFunction();
+        }
     }
     // showCountries();
 
@@ -159,7 +149,9 @@ function searchFunction(){
     
         //Execute the function code here...
         countriesContainer.innerHTML = '';
-        removeActiveItem()
+        // removeActiveItem()
+        let regionFilter = document.querySelector('.active');
+        if (regionFilter !== null) {regionFilter = regionFilter.textContent}
         let inputText = document.querySelector('#searchInput').value.toLowerCase();
 
         if(inputText != ''){
@@ -168,7 +160,15 @@ function searchFunction(){
             .then(res =>{return res.json()})
             .then(data=>{
                 data.forEach(country => {
-                    createCountry(country);
+                    if (regionFilter != 'All' && regionFilter != null){
+                        if (regionFilter == country.region){
+                            createCountry(country);
+                        }
+                    }
+                    else{
+                        createCountry(country);
+                    }
+                    
                 })
             })
             .catch(error=>console.log(error))

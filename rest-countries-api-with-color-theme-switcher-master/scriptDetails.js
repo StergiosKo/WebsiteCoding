@@ -83,9 +83,6 @@ async function displayCountry() {
             }));     
         });
     }
-    else{
-        bordersContainer.querySelector('h2').textContent += 'None'
-    }
 
 }
 
