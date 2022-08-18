@@ -58,7 +58,8 @@ header div{
     justify-content: space-between;
     align-items: center;
     font-weight: 800;
-    padding: 0px 8%;
+    max-width: 1280px;
+    margin: auto;
 }
 
 header div h1{
@@ -67,6 +68,8 @@ header div h1{
 
 header div div{
     padding: 5px;
+    width: auto;
+    margin: 0px;
 }
 
 header div:hover{
@@ -80,11 +83,6 @@ header div img{
     vertical-align: sub;
     margin-right: 5px;
     filter: invert(var(--svg-invert));
-}
-
-header div div{
-    display: block;
-    width: auto;
 }
 
 section#filters{

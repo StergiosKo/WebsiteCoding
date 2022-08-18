@@ -92,6 +92,7 @@ if (sessionStorage.getItem('mode') == 'light'){
 
 displayCountry();
 
+// Should return to last page with history
 function returnMain(){
     var para = new URLSearchParams();
     if (document.querySelector('body').getAttribute('data-theme') == 'light'){
