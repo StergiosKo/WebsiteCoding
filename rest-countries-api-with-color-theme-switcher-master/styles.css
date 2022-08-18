@@ -60,6 +60,7 @@ header div{
     font-weight: 800;
     max-width: 1280px;
     margin: auto;
+    padding: 0px 100px;
 }
 
 header div h1{
@@ -398,6 +399,7 @@ div#lists-container ul li{
 #main-content section#borders{
     display: grid;
     grid-template-columns: max-content auto;
+    max-height: 200px;
 }
 
 #main-content #borders-container{
@@ -519,6 +521,7 @@ div#lists-container ul li{
             width: 100%;
             height: auto;
             align-self: center;
+            margin-bottom: 20px;
         }
         
         #main-content #country-container img{
